@@ -1,0 +1,10 @@
+# .gitignore
+node_modules
+/env/
+/venv/
+/.venv/
+
+# Python
+__pycache__/
+
+```

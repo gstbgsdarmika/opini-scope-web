@@ -1,0 +1,77 @@
+{% extends 'navigation.html' %} {% block title %}
+<title>Analisis File</title>
+{% endblock %} {% block content %}
+<div class="container w-11/12 mx-auto mt-10">
+  <div class="grid items-center justify-center grid-cols-2 h-svh gap-x-20">
+    <div class="col-span-1">
+      <div class="object-cover">
+        <img
+          src="{{ url_for('static', filename='images/mobile.png') }}"
+          alt="Login Image"
+          class="object-cover"
+        />
+      </div>
+    </div>
+    <div class="col-span-1">
+      <div class="">
+        <h1 class="text-[#40444E] text-4xl font-bold mb-4">
+          Pilih Masukan Data
+        </h1>
+        <p class="mb-10 text-base text-justify text-stone-700">
+          Pastikan file .csv dilengkapi dengan kolom
+          <span class="text-base font-semibold text-[#5842BE]">
+            'komentar'
+          </span>
+          untuk memastikan analisis berjalan dengan lancar.
+        </p>
+        <div class="w-11/12">
+          <form
+            id="analysis-form"
+            class="flex items-center justify-center gap-x-5"
+            action="/analisis-file"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <input
+              class="block w-full text-sm border border-gray-300 rounded-lg shadow-sm focus:z-10 focus:border-[#5842BE] focus:ring-[#5842BE] disabled:opacity-50 disabled:pointer-events-none file:bg-gray-100 file:border-0 file:me-4 file:py-3 file:px-4"
+              id="file-input"
+              name="file-input"
+              type="file"
+              accept=".csv"
+            />
+            <button
+              type="sumbit"
+              id="submitFile"
+              class="text-center bg-[#5842BE] text-white py-3 px-4 font-semibold rounded-lg hover:bg-[#583cd6]"
+            >
+              Analisis
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% if error %}
+<script>
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: "{{ error }}",
+  });
+</script>
+{% endif %}
+<script>
+  document.getElementById("submitFile").addEventListener("click", function () {
+    Swal.fire({
+      title: "Sedang memproses file...",
+      showLoaderOnConfirm: true,
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+  });
+</script>
+{% endblock %}

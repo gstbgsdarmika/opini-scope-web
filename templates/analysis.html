@@ -1,0 +1,42 @@
+{% extends 'navigation.html' %} {% block title %}
+<title>Analisis</title>
+{% endblock %} {% block content %}
+<div class="container w-11/12 mx-auto mt-10">
+  <div class="grid items-center justify-center grid-cols-2 h-svh gap-x-20">
+    <div class="col-span-1">
+      <div class="object-cover">
+        <img
+          src="{{ url_for('static', filename='images/mobile.png') }}"
+          alt="Login Image"
+          class="object-cover"
+        />
+      </div>
+    </div>
+    <div class="col-span-1">
+      <div class="">
+        <h1 class="text-[#40444E] text-4xl font-bold mb-4">
+          Pilih Masukan Data
+        </h1>
+        <p class="mb-10 text-base text-justify text-stone-700">
+          OpiniScope memungkinkan untuk memasukkan teks langsung atau mengunggah
+          data dalam format CSV.
+        </p>
+        <div class="flex gap-x-4">
+          <a
+            href="{{ url_for('analysisInputText') }}"
+            class="w-1/3 text-center bg-[#5842BE] text-white py-3 px-4 font-semibold rounded-lg hover:bg-[#583cd6]"
+          >
+            Masukan Teks
+          </a>
+          <a
+            href="{{ url_for('analysisInputFile') }}"
+            class="w-1/3 text-center bg-[#5842BE] text-white py-3 px-4 font-semibold rounded-lg hover:bg-[#583cd6]"
+          >
+            Upload File
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

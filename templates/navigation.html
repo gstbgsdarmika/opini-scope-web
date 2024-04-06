@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{{ url_for('static', filename='images/icons/logo.svg') }}"
+    />
+    {% block title %} {% endblock %}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='dist/css/output.css') }}"
+    />
+    <link rel="stylesheet" href="{{ url_for('serve_apexcharts_css') }}" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <header
+      id="navbar"
+      class="fixed top-0 z-50 flex flex-wrap w-full py-4 text-sm bg-white lg:px-8 sm:justify-start sm:flex-nowrap"
+    >
+      <nav
+        class="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between"
+        aria-label="Global"
+      >
+        <div class="flex items-center justify-between">
+          <a
+            class="inline-flex items-center gap-x-2 flex-none text-xl font-bold text-[#40444E]"
+            href="{{ url_for('index') }}"
+          >
+            <img
+              class="w-10 h-auto"
+              src="{{ url_for('static', filename='images/icons/logo.svg') }}"
+              alt="Logo"
+            />
+            OpiniScope
+          </a>
+          <div class="sm:hidden">
+            <button
+              type="button"
+              class="inline-flex items-center justify-center p-2 text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm hs-collapse-toggle gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+              data-hs-collapse="#navbar-image-and-text-2"
+              aria-controls="navbar-image-and-text-2"
+              aria-label="Toggle navigation"
+            >
+              <svg
+                class="flex-shrink-0 w-4 h-4 hs-collapse-open:hidden"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <line x1="3" x2="21" y1="6" y2="6" />
+                <line x1="3" x2="21" y1="12" y2="12" />
+                <line x1="3" x2="21" y1="18" y2="18" />
+              </svg>
+              <svg
+                class="flex-shrink-0 hidden w-4 h-4 hs-collapse-open:block"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div
+          id="navbar-image-and-text-2"
+          class="hidden overflow-hidden transition-all duration-300 hs-collapse basis-full grow sm:block"
+        >
+          <div
+            class="flex flex-col gap-12 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5"
+          >
+            <a
+              class="text-base {% if active_page == 'index' %} text-[#5842BE] font-semibold {% else %} font-base text-gray-400 hover:text-[#5842BE] {% endif %}"
+              href="{{ url_for('index') }}"
+              aria-current="page"
+              >Beranda</a
+            >
+            <a
+              class="text-base {% if active_page == 'analysis' %} text-[#5842BE] font-semibold {% else %} font-base text-gray-400 hover:text-[#5842BE] {% endif %}"
+              href="{{ url_for('analysis') }}"
+              >Analisis</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>{% block content %} {% endblock %}</main>
+  </body>
+  <script>
+    window.addEventListener("scroll", function () {
+      var navbar = document.getElementById("navbar");
+      // Jika posisi scroll lebih besar dari 0, tambahkan kelas shadow
+      if (window.scrollY > 0) {
+        navbar.classList.add("shadow-md");
+      } else {
+        // Jika tidak, hapus kelas shadow
+        navbar.classList.remove("shadow-md");
+      }
+    });
+  </script>
+  <script src="{{ url_for('serve_preline_js') }}"></script>
+  <script src="{{ url_for('serve_lodash_js') }}"></script>
+  <script src="{{ url_for('serve_apexcharts_js') }}"></script>
+  <script src="{{ url_for('serve_apexcharts_css') }}"></script>
+  <script src="https://preline.co/assets/js/hs-apexcharts-helpers.js"></script>
+</html>

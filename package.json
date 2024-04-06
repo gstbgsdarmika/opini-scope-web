@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.41.2",
+    "apexcharts": "^3.45.2",
+    "lodash": "^4.17.21",
+    "preline": "^2.0.3",
+    "sweetalert2": "^11.10.4"
+  }
+}

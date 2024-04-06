@@ -1,0 +1,30 @@
+{% extends 'navigation.html' %} {% block title %}
+<title>Hasil Analisis</title>
+{% endblock %} {% block content %}
+<div class="container w-11/12 mx-auto mt-10">
+  <div class="flex flex-col items-center justify-center h-screen text-center">
+    <h1 class="text-[#40444E] text-4xl font-bold mb-10">
+      Hasil Analisis Sentimen
+    </h1>
+    <p class="w-3/5 mb-8 text-base font-semibold text-justify text-stone-700">
+      Komentar :
+      <span class="font-normal text-stone-700">{{ text }} </span>
+    </p>
+    <p class="w-3/5 text-base font-semibold text-justify text-stone-700">
+      Preprocessing :
+      <span class="font-normal text-stone-700">{{ clean_sentence }}</span>
+    </p>
+    <h1
+      class="md:p-4 p-1.5 mt-14 capitalize bg-[#5842BE] rounded-2xl text-white md:text-4xl text-2xl font-extrabold inline-block"
+    >
+      Sentimen : {{ prediction_label }}
+    </h1>
+    <a
+      href="{{ url_for('analysisInputText') }}"
+      class="transition-all px-4 mt-10 py-3 border border-[#5842BE] font-semibold text-center text-[#5842BE] rounded-lg hover:bg-[#5842BE] hover:border-none hover:text-white"
+    >
+      Coba Lagi
+    </a>
+  </div>
+</div>
+{% endblock %}

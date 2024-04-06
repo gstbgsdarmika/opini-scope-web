@@ -1,0 +1,50 @@
+{% extends 'navigation.html' %} {% block title %}
+<title>Beranda</title>
+{% endblock %} {% block content %}
+<div class="container w-11/12 mx-auto mt-10">
+  <div
+    class="grid items-center justify-center grid-cols-1 md:grid-cols-2 h-svh lg:gap-x-20"
+  >
+    <div class="col-span-1">
+      <div class="object-cover">
+        <img
+          src="{{ url_for('static', filename='images/mobile.png') }}"
+          alt="Login Image"
+          class="object-cover"
+        />
+      </div>
+    </div>
+    <div class="col-span-1">
+      <h1 class="text-[#40444E] text-2xl md:text-4xl font-bold mb-4">
+        Aplikasi OpiniScope
+      </h1>
+      <p class="mb-2 text-base text-justify md:mb-10 text-stone-700">
+        OpiniScope merupakan suatu teknologi machine learning yang memiliki
+        kemampuan untuk menganalisis sentimen yang berkaitan dengan Pemilu 2024.
+        Dengan kecerdasannya, OpiniScope mampu memahami pesan-pesan yang
+        tersebar di Twitter, sehingga dapat memberikan pemahaman yang lebih baik
+        terhadap opini publik.
+      </p>
+      <a
+        href="{{ url_for('analysis') }}"
+        class="text-center bg-[#5842BE] text-white py-3 px-4 font-semibold rounded-lg hover:bg-[#583cd6]"
+      >
+        Coba Sekarang
+      </a>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get("message");
+    if (message) {
+      Swal.fire({
+        icon: "success",
+        title: message,
+        showConfirmButton: false,
+      });
+    }
+  });
+</script>
+{% endblock %}

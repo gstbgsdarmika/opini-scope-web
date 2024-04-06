@@ -1,0 +1,47 @@
+{% extends 'navigation.html' %} {% block title %}
+<title>Analisis Teks</title>
+{% endblock %} {% block content %}
+<div class="container w-11/12 mx-auto mt-10">
+  <div class="grid items-center justify-center grid-cols-2 h-svh gap-x-20">
+    <div class="col-span-1">
+      <div class="object-cover">
+        <img
+          src="{{ url_for('static', filename='images/mobile.png') }}"
+          alt="Login Image"
+          class="object-cover"
+        />
+      </div>
+    </div>
+    <div class="col-span-1">
+      <div class="">
+        <h1 class="text-[#40444E] text-4xl font-bold mb-4">Tuliskan teks</h1>
+        <div class="flex gap-x-4">
+          <form class="w-full" method="post">
+            <textarea
+              id="text-input"
+              name="text-input"
+              class="block w-full px-4 py-3 text-sm border border-gray-400 rounded-lg focus:border-[#5842BE] focus:ring-[#5842BE] disabled:opacity-50 disabled:pointer-events-none"
+              rows="6"
+              placeholder="Ketik teks yang ingin dianalisis"
+            ></textarea>
+            <button
+              type="submit"
+              class="text-center bg-[#5842BE] text-white py-3 px-4 font-semibold rounded-lg mt-6 hover:bg-[#583cd6]"
+            >
+              Analisis
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% if error_message %}
+<script>
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: "{{ error_message }}",
+  });
+</script>
+{% endif %} {% endblock %}
